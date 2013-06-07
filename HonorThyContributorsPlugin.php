@@ -35,13 +35,8 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
 
   }
 
-  public function hookPublicItemsShow() {
-
-    echo "We made this together at THATCamp!!!";
-
-  }
-
   public function hookdefineroutes($args) {
+    // Direct the URL set in option to the view for this plugin
     $router = $args['router'];
     $router->addroute(
       'honor_thy_contributors_path',
