@@ -10,6 +10,10 @@
 
 // Define constants that set default options
 define('HONOR_THY_CONTRIBUTORS_PAGE_PATH', 'contributors/');
+define('HONOR_THY_CONTRIBUTORS_PAGE_TITLE', 'Contributors');
+define('HONOR_THY_CONTRIBUTORS_PRE_TEXT', 
+  'The following people have contributed to this website.');
+define('HONOR_THY_CONTRIBUTORS_POST_TEXT', '');
 
 class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
 {
@@ -24,16 +28,22 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
     );
 
   public function hookInstall() {
-
     // Set the url to the public page as a url that can be changed
-    set_option('honor_thy_contributors_page_path', HONOR_THY_CONTRIBUTORS_PAGE_PATH);
-
+    set_option('honor_thy_contributors_page_path',
+     HONOR_THY_CONTRIBUTORS_PAGE_PATH);
+    set_option('honor_thy_contributors_page_title',
+     HONOR_THY_CONTRIBUTORS_PAGE_TITLE);
+    set_option('honor_thy_contributors_pre_text',
+     HONOR_THY_CONTRIBUTORS_PRE_TEXT);
+    set_option('honor_thy_contributors_post_text',
+     HONOR_THY_CONTRIBUTORS_POST_TEXT);
   }
 
   public function hookUninstall() {
-
     delete_option('honor_thy_contributors_page_path');
-
+    delete_option('honor_thy_contributors_page_title');
+    delete_option('honor_thy_contributors_pre_text');
+    delete_option('honor_thy_contributors_post_text');
   }
 
   public function hookdefineroutes($args) {
@@ -64,6 +74,9 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
   {
     $post = $args['post'];
     set_option('honor_thy_contributors_page_path', $post['page_path']);
+    set_option('honor_thy_contributors_page_title', $post['page_title']);
+    set_option('honor_thy_contributors_pre_text', $post['pre_text']);
+    set_option('honor_thy_contributors_post_text', $post['post_text']);
   }
 
 }
