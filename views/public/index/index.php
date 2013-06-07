@@ -2,8 +2,13 @@
 
 <div id="primary">
 
-  <h1>Contributors</h1>
+  <?php 
 
+  echo "<h1>" . get_option('honor_thy_contributors_page_title') . "</h1>";
+
+  echo "<p>" . get_option('honor_thy_contributors_pre_text') . "</p>";
+
+  ?> 
   <table>
     <tr>
       <th>Name</th>
@@ -27,6 +32,8 @@
     }
     ?>
   </table>
+
+  <?php echo "<p>" . get_option('honor_thy_contributors_post_text') . "</p>"; ?>
 
 </div>
 
