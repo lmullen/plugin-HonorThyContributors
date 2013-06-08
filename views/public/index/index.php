@@ -1,4 +1,14 @@
-<?php echo head(); ?>
+<?php
+
+ /**
+ * Honor Thy Contributors plugin for Omeka
+ * 
+ * @copyright Copyright 2013 Lincoln A. Mullen
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
+ *
+ */
+
+echo head(); ?>
 
 <div id="primary">
 
