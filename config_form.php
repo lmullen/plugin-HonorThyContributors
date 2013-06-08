@@ -38,7 +38,7 @@ $view = get_view();
     <div class="input-block">
       <?php echo $view->formText('page_title', $page_title, array('class' => 'textinput')); ?>
       <p class="explanation">
-        The title that will display on the contributors page.
+        The title that will display on the contributors page and in the main site navigation.
       </p>
     </div>
   </div>

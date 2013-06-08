@@ -27,6 +27,10 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
     'config'
     );
 
+  protected $_filters = array (
+    'public_navigation_main'
+    );
+
   public function hookInstall() {
     // Set the url to the public page as a url that can be changed
     set_option('honor_thy_contributors_page_path',
@@ -77,6 +81,15 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
     set_option('honor_thy_contributors_page_title', $post['page_title']);
     set_option('honor_thy_contributors_pre_text', $post['pre_text']);
     set_option('honor_thy_contributors_post_text', $post['post_text']);
+  }
+
+  public function filterPublicNavigationMain($nav) 
+  {
+    $nav[] = array(
+      'label' => get_option('honor_thy_contributors_page_title'),
+      'uri' => url(get_option('honor_thy_contributors_page_path'))
+      );
+    return $nav;
   }
 
 }
