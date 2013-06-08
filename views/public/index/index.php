@@ -25,8 +25,18 @@
 
     $contributors = $db->query($sql)->fetchall();
     foreach ($contributors as $contributor) {
+  
+      // Construct a url to the items the person has contributed
+      $search_link =  url('items/browse', array(
+        'search' => '',
+        'advanced[0][element_id]' => '37',
+        'advanced[0][type]' => 'is exactly',
+        'advanced[0][terms]' => $contributor['text'],
+        'submit_search' => 'Search'));
+
+      // Create the table that displays the contributors
       echo "<tr>";
-      echo "<td>" . $contributor['text'] . "</td>";
+      echo "<td><a href='" . $search_link ."'>" . $contributor['text'] . "</a></td>";
       echo "<td>" . $contributor['COUNT(`text`)'] . "</td>";
       echo "</tr>";
     }
