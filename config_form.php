@@ -50,9 +50,9 @@ $view = get_view();
   </div>
   <div class="inputs five columns omega">
     <div class="input-block">
-      <?php echo $view->formText('pre_text', $pre_text, array('class' => 'textinput')); ?>
+      <?php echo $view->formTextarea('pre_text', $pre_text, array('class' => 'textinput', 'rows' => '8')); ?>
       <p class="explanation">
-        The text that will display before the table of contributors.
+        The text that will display before the table of contributors. You may use basic HTML.
       </p>
     </div>
   </div>
@@ -64,9 +64,9 @@ $view = get_view();
   </div>
   <div class="inputs five columns omega">
     <div class="input-block">
-      <?php echo $view->formText('post_text', $post_text, array('class' => 'textinput')); ?>
+      <?php echo $view->formTextarea('post_text', $post_text, array('class' => 'textinput', 'rows' => '8')); ?>
       <p class="explanation">
-        The text that will display after the table of contributors.
+        The text that will display after the table of contributors. You may use basic HTML.
       </p>
     </div>
   </div>
