@@ -10,7 +10,7 @@ jQuery(window).load(function () {
 
 <?php 
 $page_path = get_option('honor_thy_contributors_page_path');
-$page_title = get_option('honor_thy_contributors_title');
+$page_title = get_option('honor_thy_contributors_page_title');
 $pre_text = get_option('honor_thy_contributors_pre_text');
 $post_text = get_option('honor_thy_contributors_post_text');
 $view = get_view();
