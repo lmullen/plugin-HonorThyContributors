@@ -14,6 +14,7 @@ define('HONOR_THY_CONTRIBUTORS_PAGE_TITLE', 'Contributors');
 define('HONOR_THY_CONTRIBUTORS_PRE_TEXT', 
   'The following people have contributed to this website.');
 define('HONOR_THY_CONTRIBUTORS_POST_TEXT', '');
+define('HONOR_THY_CONTRIBUTORS_ELEMENT_ID', '37');
 
 class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
 {
@@ -21,6 +22,7 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
   // Define hooks
   protected $_hooks = array(
     'install',
+    'upgrade',
     'uninstall',
     'define_routes',
     'config_form',
@@ -41,6 +43,20 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
      HONOR_THY_CONTRIBUTORS_PRE_TEXT);
     set_option('honor_thy_contributors_post_text',
      HONOR_THY_CONTRIBUTORS_POST_TEXT);
+    set_option('honor_thy_contributors_element_id',
+     HONOR_THY_CONTRIBUTORS_ELEMENT_ID);
+  }
+
+  public function hookUpgrade() {
+    $oldVersion = $args['old_version'];
+    $newVersion = $args['new_version'];
+
+    if ($oldVersion < '0.1.2') {
+      // The first version hard coded the element id. Later versions expose it 
+      // as an option.
+      set_option('honor_thy_contributors_element_id',
+        HONOR_THY_CONTRIBUTORS_ELEMENT_ID);
+    }    
   }
 
   public function hookUninstall() {
@@ -48,6 +64,7 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
     delete_option('honor_thy_contributors_page_title');
     delete_option('honor_thy_contributors_pre_text');
     delete_option('honor_thy_contributors_post_text');
+    delete_option('honor_thy_contributors_element_id');
   }
 
   public function hookdefineroutes($args) {
@@ -81,6 +98,7 @@ class HonorThyContributorsPlugin extends Omeka_Plugin_AbstractPlugin
     set_option('honor_thy_contributors_page_title', $post['page_title']);
     set_option('honor_thy_contributors_pre_text', $post['pre_text']);
     set_option('honor_thy_contributors_post_text', $post['post_text']);
+    set_option('honor_thy_contributors_element_id', $post['element_id']);
   }
 
   public function filterPublicNavigationMain($nav) 

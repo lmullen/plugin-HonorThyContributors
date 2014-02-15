@@ -9,11 +9,12 @@ jQuery(window).load(function () {
 </script>
 
 <?php 
-$page_path = get_option('honor_thy_contributors_page_path');
+$page_path  = get_option('honor_thy_contributors_page_path');
 $page_title = get_option('honor_thy_contributors_page_title');
-$pre_text = get_option('honor_thy_contributors_pre_text');
-$post_text = get_option('honor_thy_contributors_post_text');
-$view = get_view();
+$pre_text   = get_option('honor_thy_contributors_pre_text');
+$post_text  = get_option('honor_thy_contributors_post_text');
+$element_id = get_option('honor_thy_contributors_element_id');
+$view       = get_view();
 ?>
 
 <div class="field">
@@ -71,3 +72,20 @@ $view = get_view();
     </div>
   </div>
 </div>
+
+<div class="field">
+  <div class="two columns alpha">
+    <?php echo $view->formLabel('', 'Element ID'); ?>
+  </div>
+  <div class="inputs five columns omega">
+    <div class="input-block">
+      <?php echo $view->formText('element_id', $element_id, array('class' => 
+'textinput', 'rows' => '8')); ?>
+      <p class="explanation">
+        The ID (e.g., 37) of the element text that should be used to identify 
+contributors.
+      </p>
+    </div>
+  </div>
+</div>
+

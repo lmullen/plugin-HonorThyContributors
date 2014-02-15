@@ -30,7 +30,7 @@ echo head(); ?>
     $sql = "
     SELECT `text`, COUNT(`text`)
     FROM `omeka_element_texts`
-    WHERE `element_id` = 37
+    WHERE `element_id` = ".get_option('honor_thy_contributors_element_id')."
     GROUP BY `text`";
 
     $contributors = $db->query($sql)->fetchall();
@@ -39,7 +39,8 @@ echo head(); ?>
       // Construct a url to the items the person has contributed
       $search_link =  url('items/browse', array(
         'search' => '',
-        'advanced[0][element_id]' => '37',
+        'advanced[0][element_id]' => 
+          get_option('honor_thy_contributors_element_id'),
         'advanced[0][type]' => 'is exactly',
         'advanced[0][terms]' => $contributor['text'],
         'submit_search' => 'Search'));
