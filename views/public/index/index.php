@@ -29,7 +29,7 @@ echo head(); ?>
 
     $sql = "
     SELECT `text`, COUNT(`text`)
-    FROM `omeka_element_texts`
+    FROM `".$db->prefix."element_texts`
     WHERE `element_id` = ".get_option('honor_thy_contributors_element_id')."
     GROUP BY `text`";
 
